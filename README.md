@@ -1,6 +1,11 @@
 # captcha-zh
-图形验证码中文字库，`go`的练手工程，参考[jianxinio/captcha](https://github.com/jianxinio/captcha
-)
+图形验证码的中文字库，`go`项目的练手工程
+
+![img](bin/tmp/32b3b227587628260395ba0216b554ac.gif)
+
+![img](bin/tmp/9969941e0afddca3a91d9712a61f0b0e.gif)
+
+![img](bin/tmp/1218705|6.gif)
 
 ### need
 > 需要安装的库
@@ -17,4 +22,6 @@ go get gopkg.in/gographics/imagick.v3/imagick
 pkg-config --cflags --libs MagickWand
 ```
 
-### read
+### READ
+
+参考[jianxinio/captcha](https://github.com/jianxinio/captcha)
