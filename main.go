@@ -21,7 +21,7 @@ func timeTest() {
 	fmt.Println("topic", int64(time.Now().Nanosecond()))
 }
 
-func main() {
+func amain() {
 	fmt.Println("hello world!")
 
 	// fun1
