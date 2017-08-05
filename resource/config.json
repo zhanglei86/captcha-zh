@@ -1,6 +1,6 @@
 {
   "initial_count": 3,
   "check_interval": 10,
-  "threshold": 30,
+  "threshold": 13,
   "update_count": 100
 }

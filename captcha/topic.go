@@ -2,6 +2,7 @@ package captcha
 
 import (
 	"captcha-zh/config"
+	"captcha-zh/common/security"
 
 	"strings"
 	"strconv"
@@ -63,6 +64,13 @@ func RandomGen() chan int{
 func randFont() string {
 	rand.Seed(int64(time.Now().Nanosecond()))
 	return config.Fonts[rand.Intn(len(config.Fonts))]
+}
+
+func RandomName() string {
+	nano := time.Now().UnixNano()
+	rand.Seed(nano)
+	rndNum := rand.Int63()
+	return security.Md5(security.Md5(strconv.FormatInt(nano, 10)) + security.Md5(strconv.FormatInt(rndNum, 10)))
 }
 
 /*

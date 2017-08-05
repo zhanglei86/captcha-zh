@@ -44,12 +44,14 @@ func (c *Container) Append(items ...string) {
 
 func (c *Container) UpdateNeed() bool {
 	ts := config.GetConfig().Threshold
+
 	if c.consumption < ts {
 		return false
 	}
 
 	//更新后，计数器清零
 	c.consumption = 0
+
 	return true
 }
 
