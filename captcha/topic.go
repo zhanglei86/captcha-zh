@@ -11,6 +11,9 @@ import (
 
 const (
 	captchaLen int = 7
+
+	MIN int = 0
+	MAX int = 10
 )
 
 var (
@@ -73,19 +76,19 @@ func Num2Cn(num int) NumSt {
 	// case:十几
 	if a == 1 {
 		numSt.Size = 2
-		numSt.Cn = strings.Join([]string{num2chinese[10], num2chinese[b]}, " ")
+		numSt.Cn = strings.Join([]string{num2chinese[10], num2chinese[b]}, config.SEPARATOR_SPACE)
 		return numSt
 	}
 	// case:几十
 	if b == 0 {
 		numSt.Size = 2
-		numSt.Cn = strings.Join([]string{num2chinese[a], num2chinese[10]}, " ")
+		numSt.Cn = strings.Join([]string{num2chinese[a], num2chinese[10]}, config.SEPARATOR_SPACE)
 		return numSt
 	}
 
 	// case:其他
 	numSt.Size = 3
-	numSt.Cn = strings.Join([]string{num2chinese[a], num2chinese[10], num2chinese[b]}, " ")
+	numSt.Cn = strings.Join([]string{num2chinese[a], num2chinese[10], num2chinese[b]}, config.SEPARATOR_SPACE)
 
 	return numSt
 }
@@ -94,17 +97,17 @@ func TopicParse(le NumSt, rt NumSt, operator string, optLen int) string {
 	var currentLen int = le.Size + rt.Size
 	optArr := operator2chinese[operator]
 	if currentLen == 6 {
-		return strings.Join([]string{le.Cn, optArr[0], rt.Cn}, " ")
+		return strings.Join([]string{le.Cn, optArr[0], rt.Cn}, config.SEPARATOR_SPACE)
 	}
 	if currentLen == 5 && optLen == 2 {
-		return strings.Join([]string{le.Cn, optArr[1], rt.Cn}, " ")
+		return strings.Join([]string{le.Cn, optArr[1], rt.Cn}, config.SEPARATOR_SPACE)
 	}
 	eqlLen := captchaLen - optLen - currentLen
-	return strings.Join([]string{le.Cn, optArr[optLen-1], rt.Cn, eql2chinese[eqlLen-1]}, " ")
+	return strings.Join([]string{le.Cn, optArr[optLen-1], rt.Cn, eql2chinese[eqlLen-1]}, config.SEPARATOR_SPACE)
 }
 
 func RandNumParse(num int) NumSt {
-	if random(0, 10) < 5 {
+	if random(MIN, MAX) < 5 {
 		return Num2Cn(num)
 	}
 	return NumSt{1, strconv.Itoa(num)}
@@ -114,21 +117,21 @@ func RandTopic() Topic {
 	var le, rt, result int
 	var operator string
 
-	operateInt := random(0, 10)
+	operateInt := random(MIN, MAX)
 	if operateInt < 5 {
 		operator = "+"
-		le, rt = random(0, 10), random(0, 10)
+		le, rt = random(MIN, MAX), random(MIN, MAX)
 		result = le + rt
 	} else {
 		operator = "-"
 		le = random(10, 20)
-		rt = random(0, le)
+		rt = random(MIN, le)
 		result = le - rt
 	}
 
 	// 随机
 	optLen := 2
-	if random(0, 10) < 5 {
+	if random(MIN, MAX) < 5 {
 		optLen = 1
 	}
 

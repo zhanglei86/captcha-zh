@@ -19,15 +19,15 @@ func init() {
 }
 
 func drawSetfont(mw *imagick.MagickWand, dw *imagick.DrawingWand) {
-	dw.SetFont(randFont())
 	pw := imagick.NewPixelWand()
 	defer pw.Destroy()
 
 	pw.SetColor(colors[rand.Intn(len(colors))])
-	dw.SetFontWeight(500)
-	dw.SetFillColor(pw)
-	dw.SetFontSize(33)
 
+	dw.SetFont(randFont())
+	dw.SetFillColor(pw)
+	dw.SetFontWeight(500)
+	dw.SetFontSize(33)
 }
 
 func drawMetrics(mw *imagick.MagickWand, dw *imagick.DrawingWand, dx *float64, text string) {
@@ -43,21 +43,22 @@ func drawMetrics(mw *imagick.MagickWand, dw *imagick.DrawingWand, dx *float64, t
 }
 
 func writeWord(mw *imagick.MagickWand, dw *imagick.DrawingWand, dx *float64, text string) {
-	drawSetfont(mw, dw)
+	drawSetfont(nil, dw)
 	drawMetrics(mw, dw, dx, text)
 }
 
-
 func Draw(text string, name string) {
+	// init imageick
 	imagick.Initialize()
 	defer imagick.Terminate()
-	// Current coordinates of text
-	var dx float64 = 20
 
 	mw := imagick.NewMagickWand()
-	dw := imagick.NewDrawingWand()
 	defer mw.Destroy()
+	dw := imagick.NewDrawingWand()
 	defer dw.Destroy()
+
+	// Current coordinates of text
+	var dx float64 = 20
 
 	// Set the size of the image
 	mw.SetSize(285, 50)

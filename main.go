@@ -1,10 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"time"
 	"captcha-zh/config"
 	"captcha-zh/captcha"
+
+	"fmt"
+	"time"
 )
 
 func timeTest() {

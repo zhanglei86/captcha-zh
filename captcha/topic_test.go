@@ -1,14 +1,10 @@
 package captcha
 
 import (
-	"captcha-zh/config"
-
-	"strconv"
 	"testing"
-	"time"
 )
 
-func TestNum2CN(t *testing.T) {
+func TestNum2Cn(t *testing.T) {
 	a := Num2Cn(5)
 	if a.Size != 1 || a.Cn != "五" {
 		t.Log(a)
@@ -47,12 +43,5 @@ func TestTopicParse(t *testing.T) {
 	d := TopicParse(NumSt{1, "12"}, NumSt{1, "12"}, "-", 1)
 	if d != "12 减 12 是 多 少 呢" {
 		t.Fatalf("Topic unexpected: %s", d)
-	}
-}
-
-func BenchmarkTopic(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		tp := RandTopic()
-		Draw(tp.Subject, config.PATH_ROOT + "bin/tmp/"+strconv.Itoa(time.Now().Nanosecond())+"|"+tp.Result+".gif")
 	}
 }

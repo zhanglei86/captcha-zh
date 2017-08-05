@@ -1,5 +1,5 @@
 # captcha-zh
-图形验证码的中文字库，`go`项目的练手工程
+>图形验证码的中文字库，`go`项目的练手工程
 
 例子：
 
@@ -10,9 +10,9 @@
 ![img](bin/1218705|6.gif)
 
 ### 一、NEED
-> 需要安装的库
+>需要安装的库
 
-mac系统下按照
+mac系统下
 ```
 brew install pkg-config
 brew install imagemagick
