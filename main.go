@@ -32,7 +32,7 @@ func main() {
 	fmt.Println(*c)
 
 	// fun3
-	d := captcha.Random(1,5)
+	d := captcha.Random(1,10)
 	fmt.Println(d)
 
 	d2 := captcha.RandomGen()
@@ -42,8 +42,7 @@ func main() {
 
 	// fun4
 	var tpc captcha.Topic = captcha.RandTopic()
-	fmt.Println(tpc.Subject)
-	fmt.Println(tpc.Result)
+	fmt.Println(tpc.Subject, "=", tpc.Result)
 
 	// fun5
 }

@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+/**
+图片逻辑
+ */
+
 var (
 	// random colors
 	colors []string = []string{"#000000", "#b50000", "#373000", "#827482"}

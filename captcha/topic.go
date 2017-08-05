@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+/**
+随机数逻辑
+ */
+
 const (
 	captchaLen int = 7
 
