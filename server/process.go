@@ -22,11 +22,11 @@ func captchaGenerate(size int) []string {
 }
 
 func Start() {
-	c := config.GetConfig()
-	captchas := captchaGenerate(c.InitialCount)
+	c := config.TConfig.CaptchaSys
+	captchas := captchaGenerate(c.Initial_count)
 	captcha.CaptchaContainer.Append(captchas...)
 	log.Print("init success.")
-	ticker := time.NewTicker(time.Second * time.Duration(c.CheckInterval))
+	ticker := time.NewTicker(time.Second * time.Duration(c.Check_interval))
 	go func() {
 		for _ = range ticker.C {
 			go workder()
@@ -38,7 +38,7 @@ func workder() {
 	if !captcha.CaptchaContainer.UpdateNeed() {
 		return
 	}
-	captchas := captchaGenerate(config.GetConfig().UpdateCount)
+	captchas := captchaGenerate(config.TConfig.CaptchaSys.Update_count)
 	captcha.CaptchaContainer.Lock()
 	oldCaptchas := captcha.CaptchaContainer.Update(captchas...)
 	captcha.CaptchaContainer.Unlock()

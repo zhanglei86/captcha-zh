@@ -43,7 +43,7 @@ func (c *Container) Append(items ...string) {
 }
 
 func (c *Container) UpdateNeed() bool {
-	ts := config.GetConfig().Threshold
+	ts := config.TConfig.CaptchaSys.Threshold
 
 	if c.consumption < ts {
 		return false

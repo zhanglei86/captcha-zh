@@ -22,6 +22,8 @@ golang的库
 ```
 go get gopkg.in/gographics/imagick.v3/imagick
 pkg-config --cflags --libs MagickWand
+
+go get github.com/BurntSushi/toml
 ```
 
 ### READ

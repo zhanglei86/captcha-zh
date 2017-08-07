@@ -13,6 +13,7 @@ const (
 	PATH_ROOT = "/Volumes/IntelSSD/Dev/GoRepository/src/captcha-zh/"
 	// 配置文件路径
 	PATH_CONFIG = PATH_ROOT + "resource/conf/config.json"
+	PATH_CONFIG_TOML = PATH_ROOT + "resource/conf/conf.toml"
 	// 字库文件路径
 	PATH_CONFIG_FONT = PATH_ROOT + "resource/assets/fonts/"
 	// 背景图片路径

@@ -1,6 +1,8 @@
-package config
+package common
 
 import(
+	"captcha-zh/config"
+
 	"io/ioutil"
 	"log"
 	"os"
@@ -8,7 +10,7 @@ import(
 	"sync"
 )
 
-type Config struct {
+type ConfigJson struct {
 	InitialCount  int `json:"initial_count"`
 	CheckInterval int `json:"check_interval"`
 	Threshold     int `json:"threshold"`
@@ -16,12 +18,12 @@ type Config struct {
 }
 
 var (
-	config *Config
+	configJson *ConfigJson
 	configLock = new(sync.RWMutex)
 )
 
-func LoadConfig(flag bool) *Config {
-	file, err := ioutil.ReadFile(PATH_CONFIG)
+func LoadConfig(flag bool) *ConfigJson {
+	file, err := ioutil.ReadFile(config.PATH_CONFIG)
 	if err != nil {
 		log.Println("open config: ", err)
 		if flag {
@@ -30,7 +32,7 @@ func LoadConfig(flag bool) *Config {
 	}
 
 	// 临时方法
-	temp := new(Config)
+	temp := new(ConfigJson)
 
 	err2 := json.Unmarshal(file, temp)
 	if err2 != nil {
@@ -42,16 +44,16 @@ func LoadConfig(flag bool) *Config {
 
 	// FIXME 为什么要加锁？！
 	configLock.Lock()
-	config = temp
+	configJson = temp
 	configLock.Unlock()
 
-	return config
+	return configJson
 }
 
-func GetConfig() *Config {
+func GetConfig() *ConfigJson {
 	configLock.RLock()
 	defer configLock.RUnlock()
-	return config
+	return configJson
 }
 
 func init() {
