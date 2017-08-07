@@ -21,7 +21,10 @@ func timeTest() {
 	fmt.Println("topic", int64(time.Now().Nanosecond()))
 }
 
-func amain() {
+/*
+测试时候，改成main()
+ */
+func main() {
 	fmt.Println("hello world!")
 
 	// fun1
