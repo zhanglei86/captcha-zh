@@ -43,8 +43,9 @@ func (c *Container) Append(items ...string) {
 }
 
 func (c *Container) UpdateNeed() bool {
-	ts := config.TConfig.CaptchaSys.Threshold
 
+	// 阀值条件，跟消费计数器比较
+	ts := config.TConfig.CaptchaSys.Threshold
 	if c.consumption < ts {
 		return false
 	}
@@ -65,10 +66,12 @@ func (c *Container) Update(items ...string) []string {
 	captchaList := make([]string, len(c.captchaList))
 	copy(captchaList, c.captchaList)
 	c.captchaList = captchaList[itemsSize:]
+
 	c.pointerIndex = (c.pointerIndex - itemsSize) % listSize
 	if c.pointerIndex < 0 {
 		c.pointerIndex += listSize
 	}
+
 	return captchaList[:itemsSize]
 }
 
@@ -77,11 +80,16 @@ func (c *Container) Next() (string, error) {
 	c.Lock()
 	defer c.Unlock()
 
+	// 自增
 	c.consumption += 1
+
 	if len(c.captchaList) == 0 {
 		return "", errors.New("No item found")
 	}
+
+	// %的算法，数组内取值
 	index := c.pointerIndex % len(c.captchaList)
 	c.pointerIndex = index + 1
+
 	return c.captchaList[index], nil
 }

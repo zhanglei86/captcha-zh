@@ -21,13 +21,13 @@ func CaptchaStream(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(500)
 		return
 	}
-	strArr := strings.Split(str, "|")
+	strArr := strings.Split(str, config.SEPARATOR_VERTICAL_LINE)
 	file, err := ioutil.ReadFile(config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_TEMP + strArr[0])
 	if err != nil {
 		w.WriteHeader(500)
 		return
 	}
-	w.Write([]byte(security.EncodeFile(file) + "|" + strArr[1]))
+	w.Write([]byte(security.EncodeFile(file) + config.SEPARATOR_VERTICAL_LINE + strArr[1]))
 }
 
 func main() {

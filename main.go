@@ -25,7 +25,7 @@ func timeTest() {
 /*
 测试时候，改成main()
  */
-func amain() {
+func main() {
 	fmt.Println("hello world!")
 
 	// fun1
@@ -53,4 +53,6 @@ func amain() {
 
 	// fun5
 	fmt.Println(tConfig.Paths.Path)
+
+
 }
