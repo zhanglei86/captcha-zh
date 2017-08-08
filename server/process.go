@@ -6,8 +6,6 @@ import (
 
 	"log"
 	"time"
-	"strings"
-	"os"
 )
 
 func captchaGenerate(size int) []string {
@@ -43,15 +41,13 @@ func workder() {
 	if !captcha.CaptchaContainer.UpdateNeed() {
 		return
 	}
+
+	// 新的
 	captchas := captchaGenerate(config.TConfig.CaptchaSys.Update_count)
 
 	captcha.CaptchaContainer.Lock()
-	oldCaptchas := captcha.CaptchaContainer.Update(captchas...)
+	captcha.CaptchaContainer.Update(captchas...)
 	captcha.CaptchaContainer.Unlock()
 
-	for _, captcha := range oldCaptchas {
-		fileName := strings.Split(captcha, "|")[0]
-		os.Remove(config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_TEMP + fileName)
-	}
 	log.Print("update suceess.")
 }

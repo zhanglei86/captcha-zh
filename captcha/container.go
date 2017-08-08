@@ -5,6 +5,8 @@ import (
 
 	"sync"
 	"errors"
+	"strings"
+	"os"
 )
 
 /**
@@ -49,8 +51,7 @@ func (c *Container) UpdateNeed() bool {
 	if c.consumption < ts {
 		return false
 	}
-
-	//更新后，计数器清零
+	//需要更新后，计数器立马清零，接受新的请求计数
 	c.consumption = 0
 
 	return true
@@ -58,7 +59,7 @@ func (c *Container) UpdateNeed() bool {
 
 // Append items to the end of the list and remove old items from the front.
 // At the same time move pointer
-func (c *Container) Update(items ...string) []string {
+func (c *Container) UpdateBak(items ...string) []string {
 
 	itemsSize, listSize := len(items), len(c.captchaList)
 	c.Append(items...)
@@ -73,6 +74,24 @@ func (c *Container) Update(items ...string) []string {
 	}
 
 	return captchaList[:itemsSize]
+}
+
+func (c *Container) Update(items ...string) {
+	// 旧的
+	oldCaptchaList := c.captchaList
+
+	// 初始化
+	c.pointerIndex = 0
+	c.captchaList = nil
+	// 加入新的
+	c.Append(items...)
+
+	// 删除旧的
+	var fileName string
+	for _, captcha := range oldCaptchaList {
+		fileName = strings.Split(captcha, config.SEPARATOR_VERTICAL_LINE)[0]
+		os.Remove(config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_TEMP + fileName)
+	}
 }
 
 // Get next item by index

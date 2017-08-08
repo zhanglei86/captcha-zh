@@ -25,7 +25,7 @@ func timeTest() {
 /*
 测试时候，改成main()
  */
-func main() {
+func amain() {
 	fmt.Println("hello world!")
 
 	// fun1

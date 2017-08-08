@@ -45,4 +45,4 @@ path = "/Volumes/IntelSSD/Dev/GoRepository/src/captcha-zh/"
 initial_count = 3
 check_interval = 10
 threshold = 13
-update_count = 100
+update_count = 18
