@@ -25,14 +25,14 @@ func timeTest() {
 /*
 测试时候，改成main()
  */
-func amain() {
+func main() {
 	fmt.Println("hello world!")
 
 	// fun1
 	timeTest()
 
 	// fun2,config_json
-	c := common.LoadConfig(true)
+	c := common.GetConfig()
 	fmt.Println(*c)
 
 	tConfig := config.TConfig

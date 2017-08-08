@@ -8,6 +8,8 @@ import(
 	"os"
 	"encoding/json"
 	"sync"
+	"os/signal"
+	"syscall"
 )
 
 type ConfigJson struct {
@@ -18,11 +20,11 @@ type ConfigJson struct {
 }
 
 var (
-	configJson *ConfigJson
+	configJson *ConfigJson	// FIXME 定义错误，定义的要大写，这样初始化一次，不用每次都load()
 	configLock = new(sync.RWMutex)
 )
 
-func LoadConfig(flag bool) *ConfigJson {
+func loadConfig(flag bool) *ConfigJson {
 	file, err := ioutil.ReadFile(config.PATH_CONFIG)
 	if err != nil {
 		log.Println("open config: ", err)
@@ -57,5 +59,16 @@ func GetConfig() *ConfigJson {
 }
 
 func init() {
-	LoadConfig(true)
+	loadConfig(true)
+
+	s := make(chan os.Signal, 1)
+	signal.Notify(s, syscall.SIGUSR2)
+	go func() {
+		for {
+			<-s
+			loadConfig(false)
+			log.Print(GetConfig())
+			log.Println("Reloaded")
+		}
+	}()
 }

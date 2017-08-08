@@ -65,7 +65,7 @@ func TestCaptchaLock(t *testing.T) {
 
 	CaptchaContainer.Lock()
 	go func() {
-		// =3
+		// =3 is ok
 		CaptchaContainer.Update("4")
 		CaptchaContainer.Unlock()
 	}()
