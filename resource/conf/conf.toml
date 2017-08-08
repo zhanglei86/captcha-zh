@@ -41,6 +41,7 @@ hosts = [
 path = "/Volumes/IntelSSD/Dev/GoRepository/src/captcha-zh/"
 
 [captchaSys]
+# 图形验证码初始化数据
 initial_count = 3
 check_interval = 10
 threshold = 13

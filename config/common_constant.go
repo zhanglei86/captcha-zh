@@ -12,14 +12,15 @@ const (
 	// 绝对路径，根
 	PATH_ROOT = "/Volumes/IntelSSD/Dev/GoRepository/src/captcha-zh/"
 	// 配置文件路径
-	PATH_CONFIG = PATH_ROOT + "resource/conf/config.json"
+	// TODO 测试用例场景读不到toml路径，要写绝对路径
 	PATH_CONFIG_TOML = PATH_ROOT + "resource/conf/conf.toml"
+	PATH_CONFIG_JSON = "resource/conf/config.json"
 	// 字库文件路径
-	PATH_CONFIG_FONT = PATH_ROOT + "resource/assets/fonts/"
+	PATH_CONFIG_FONT = "resource/assets/fonts/"
 	// 背景图片路径
-	PATH_CONFIG_IMAGE_BG = PATH_ROOT + "resource/assets/images/bg.gif"
+	PATH_CONFIG_IMAGE_BG = "resource/assets/images/bg.gif"
 	// 测试用临时图片路径
-	PATH_CONFIG_IMAGE_TEMP = PATH_ROOT + "bin/tmp/"
+	PATH_CONFIG_IMAGE_TEMP = "bin/tmp/"
 )
 
 var (

@@ -15,7 +15,7 @@ func captchaGenerate(size int) []string {
 	for i := 0; i < size; i++ {
 		Topic := captcha.RandTopic()
 		fileName := captcha.RandomName() + ".gif"
-		captcha.Draw(Topic.Subject, config.PATH_CONFIG_IMAGE_TEMP + fileName)
+		captcha.Draw(Topic.Subject, config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_TEMP + fileName)
 		s = append(s, fileName + config.SEPARATOR_VERTICAL_LINE + Topic.Result)
 	}
 	return s
@@ -44,7 +44,7 @@ func workder() {
 	captcha.CaptchaContainer.Unlock()
 	for _, captcha := range oldCaptchas {
 		fileName := strings.Split(captcha, "|")[0]
-		os.Remove(config.PATH_CONFIG_IMAGE_TEMP + fileName)
+		os.Remove(config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_TEMP + fileName)
 	}
 	log.Print("update suceess.")
 }

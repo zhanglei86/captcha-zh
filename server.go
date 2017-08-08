@@ -11,6 +11,10 @@ import (
 	"io/ioutil"
 )
 
+/**
+启http服务
+ */
+
 func CaptchaStream(w http.ResponseWriter, req *http.Request) {
 	str, err := captcha.CaptchaContainer.Next()
 	if err != nil {
@@ -18,7 +22,7 @@ func CaptchaStream(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	strArr := strings.Split(str, "|")
-	file, err := ioutil.ReadFile(config.PATH_CONFIG_IMAGE_TEMP + strArr[0])
+	file, err := ioutil.ReadFile(config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_TEMP + strArr[0])
 	if err != nil {
 		w.WriteHeader(500)
 		return

@@ -19,7 +19,7 @@ var (
 
 func init() {
 	// get all fonts file here
-	config.Fonts = config.Child(config.PATH_CONFIG_FONT)
+	config.Fonts = config.Child(config.TConfig.Paths.Path + config.PATH_CONFIG_FONT)
 }
 
 func drawSetfont(mw *imagick.MagickWand, dw *imagick.DrawingWand) {
@@ -66,7 +66,7 @@ func Draw(text string, name string) {
 
 	// Set the size of the image
 	mw.SetSize(285, 50)
-	mw.ReadImage(config.PATH_CONFIG_IMAGE_BG)
+	mw.ReadImage(config.TConfig.Paths.Path + config.PATH_CONFIG_IMAGE_BG)
 
 	// Start near the left edge
 	dw.SetFontSize(40)

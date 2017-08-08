@@ -25,7 +25,7 @@ var (
 )
 
 func loadConfig(flag bool) *ConfigJson {
-	file, err := ioutil.ReadFile(config.PATH_CONFIG)
+	file, err := ioutil.ReadFile(config.TConfig.Paths.Path + config.PATH_CONFIG_JSON)
 	if err != nil {
 		log.Println("open config: ", err)
 		if flag {

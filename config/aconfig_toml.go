@@ -7,8 +7,9 @@ import (
 )
 
 /**
-全局配置，指针变量
+配置文件初始化，toml的规范
  */
+
 var TConfig *tomlConfig
 
 type tomlConfig struct {

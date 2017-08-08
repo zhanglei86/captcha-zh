@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+/**
+字体配置
+ */
+
 func Child(path string) []string {
 	fullPath, _ := filepath.Abs(path)
 	listStr := make([]string, 0)
