@@ -24,6 +24,29 @@ const (
 	PATH_CONFIG_IMAGE_TEMP = "bin/tmp/"
 )
 
+// 月份
+var Months = [...]string{
+	"January",	// 0
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+}
+
+// 性别的枚举
+var SexConstant = map[string]string {
+	"0":"非男非女",
+	"1":"女",
+	"2":"男",
+}
+
 var (
 	Fonts []string
 )

@@ -6,7 +6,6 @@ import (
 	"captcha-zh/captcha"
 
 	"fmt"
-	"time"
 )
 
 /*
@@ -39,6 +38,5 @@ func amain() {
 
 	// fun5
 	fmt.Println(tConfig.Paths.Path)
-
 
 }
