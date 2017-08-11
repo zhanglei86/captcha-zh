@@ -25,19 +25,30 @@ const (
 )
 
 // 月份
-var Months = [...]string{
-	"January",	// 0
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December",
+var Months = [...]string {
+	1	:	"January",	// 1
+	2	:	"February",
+	3	:	"March",
+	4	:	"April",
+	5	:	"May",
+	6	:	"June",
+	7	:	"July",
+	8	:	"August",
+	9	:	"September",
+	10	:	"October",
+	11	:	"November",
+	12	:	"December",
+}
+
+// 星期
+var Weeks = [...]string {
+	"Sunday",	// 0
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday",
 }
 
 // 性别的枚举

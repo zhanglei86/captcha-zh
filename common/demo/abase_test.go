@@ -51,12 +51,17 @@ func TestExpression(t *testing.T)  {
 // 月份
 func TestMonth(t *testing.T)  {
 
-	var i int = 10
+	// test
+	fmt.Println(config.Weeks[0])
+	fmt.Println(config.Months[1])
 
+	// 循环取
+	var i int = 5
 	mySlice := make([]int, i)
 
 	// TODO 数组越界时候，如何捕获到异常？？
-	for k, _ := range mySlice {
+	for k, v := range mySlice {
+		fmt.Printf("k=%d, v=%d\n", k, v)
 		fmt.Println(config.Months[k])
 	}
 }
