@@ -3,6 +3,7 @@ package config
 const (
 	//这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4-5
 	DATE_FORMAT_DEFAULT string = "2006-01-02 15:04:05"
+	DATE_FORMAT_DEFAULT_LEN int = len(DATE_FORMAT_DEFAULT)
 
 	// 分隔符
 	SEPARATOR_UNDER_LINE = "_"
