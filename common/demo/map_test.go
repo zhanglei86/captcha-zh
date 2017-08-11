@@ -61,4 +61,9 @@ func TestMap2(t *testing.T)  {
 		fmt.Println("Capital of",country,"is",countryCapitalMap[country])
 	}
 
+	/* 打印 map的k,v */
+	for k, v := range countryCapitalMap {
+		fmt.Printf("%s -> %s\n", k, v)
+	}
+
 }

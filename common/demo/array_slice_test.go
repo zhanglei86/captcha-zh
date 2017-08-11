@@ -40,6 +40,15 @@ func TestArray2(t *testing.T)  {
 	/* 打印原始切片 */
 	fmt.Println("numbers ==", numbers)
 
+	//这是我们使用range去求一个slice的和。使用数组跟这个很类似
+	sum := 0
+	// 在数组上使用range将传入key和value两个变量。上面那个例子我们不需要使用该元素的序号，所以我们使用空白符"_"省略了。
+	for k, num := range numbers {
+		sum += num
+		fmt.Println(k)
+	}
+	fmt.Println("sum:", sum)
+
 	/* 打印子切片从索引1(包含) 到索引4(不包含)*/
 	fmt.Println("numbers[1:4] ==", numbers[1:4])
 
