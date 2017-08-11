@@ -39,7 +39,7 @@ func TestCaptchaUpdate(t *testing.T) {
 		0,
 	}
 
-	a := CaptchaContainer.Update("3")
+	a := CaptchaContainer.UpdateBak("3")
 	if a[0] != "1" || len(a) != 1 {
 		t.Fatalf("Update return with unexcepted")
 	}
