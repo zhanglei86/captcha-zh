@@ -16,6 +16,8 @@ func TestArray1(t *testing.T)  {
 	var mySlice1 []int = make([]int, 5, 10)
 	mySlice2 := make([]int, 5)
 	mySlice3 := make([]int, 5, 10)
+	mySlice4 := make([]string, 0)
+
 
 	printSlice(mySlice3)
 
@@ -26,7 +28,7 @@ func TestArray1(t *testing.T)  {
 		fmt.Printf("切片是空的\n")
 	}
 
-	fmt.Println(mySlice1, mySlice2)
+	fmt.Println(mySlice1, mySlice2, mySlice4)
 }
 
 /**
