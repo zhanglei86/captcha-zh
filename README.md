@@ -29,3 +29,5 @@ go get github.com/BurntSushi/toml
 ### READ
 
 参考[jianxinio/captcha](https://github.com/jianxinio/captcha)
+
+mark一下，做了调优，更灵活的配置文件，常量池等。
